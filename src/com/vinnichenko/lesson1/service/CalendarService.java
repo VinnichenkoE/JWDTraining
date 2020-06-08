@@ -1,38 +1,37 @@
 package com.vinnichenko.lesson1.service;
 
-import com.vinnichenko.lesson1.entities.Months;
+import com.vinnichenko.lesson1.entity.Month;
+import com.vinnichenko.lesson1.exeption.ProgramException;
 import com.vinnichenko.lesson1.validator.CalendarValidator;
 
 public class CalendarService {
 
-    CalendarValidator calendarValidator = new CalendarValidator();
-
-    public boolean isYearLeap(String stringYear) {
-        int year = Integer.parseInt(stringYear);
+    public boolean isYearLeap(int year) {
+        boolean result = false;
         if (year % 4 == 0) {
-            return true;
+            result = year % 100 != 0 || year % 400 == 0;
         }
-        return false;
+        return result;
     }
 
-    public String daysInMonth(String year, String stringMonth) {
-        if (calendarValidator.isYearValid(year) && calendarValidator.isNumberOfMontValid(stringMonth)) {
-            int month = Integer.parseInt(stringMonth);
-            int days;
-            if (month == 2 && isYearLeap(year)) {
-                days = Months.values()[month - 1].getDays() + 1;
-                return Integer.toString(days);
-            }
-            days = Months.values()[month - 1].getDays();
-            return Integer.toString(days);
+    public int daysInMonth(int year, int month) throws ProgramException {
+        int days;
+        CalendarValidator calendarValidator = new CalendarValidator();
+        if (calendarValidator.isYearValid(year) && calendarValidator.isNumberOfMonthValid(month)) {
+            days = Month.values()[month - 1].getDays();
+        } else {
+            throw new ProgramException("incorrect value of the date");
         }
-        return "incorrect data";
+        if (month == 2 && isYearLeap(year)) {
+            days++;
+        }
+        return days;
     }
 
-    public String passedTime(String stringSecond) {
-        if (calendarValidator.isSecondValid(stringSecond)) {
-            int currentSecond = Integer.parseInt(stringSecond);
-            int pastSeconds = currentSecond - 1;
+    public String passedTime(int second) throws ProgramException {
+        CalendarValidator calendarValidator = new CalendarValidator();
+        if (calendarValidator.isSecondValid(second)) {
+            int pastSeconds = second - 1;
             int hours = pastSeconds / 3600;
             int hoursInSeconds = hours * 3600;
             int minutes = (pastSeconds - hoursInSeconds) / 60;
@@ -42,6 +41,6 @@ public class CalendarService {
             return result;
 
         }
-        return "incorrect data";
+        throw new ProgramException("incorrect value of second");
     }
 }

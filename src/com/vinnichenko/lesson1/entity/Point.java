@@ -1,11 +1,11 @@
-package com.vinnichenko.lesson1.entities;
+package com.vinnichenko.lesson1.entity;
 
 import java.util.Objects;
 
 public class Point {
-    String name;
-    double coordinateX;
-    double coordinateY;
+    private String name;
+    private double coordinateX;
+    private double coordinateY;
 
     public Point(String name, double coordinateX, double coordinateY) {
         this.name = name;
@@ -42,10 +42,11 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "name='" + name + '\'' +
-                ", coordinateX=" + coordinateX +
-                ", coordinateY=" + coordinateY +
-                '}';
+        final StringBuilder sb = new StringBuilder("Point{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", coordinateX=").append(coordinateX);
+        sb.append(", coordinateY=").append(coordinateY);
+        sb.append('}');
+        return sb.toString();
     }
 }
