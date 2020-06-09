@@ -1,6 +1,7 @@
-package com.vinnichenko.lesson1.validator;
+package test.vinnichenko.lesson1.validator;
 
 import com.vinnichenko.lesson1.entity.Point;
+import com.vinnichenko.lesson1.validator.PointValidator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

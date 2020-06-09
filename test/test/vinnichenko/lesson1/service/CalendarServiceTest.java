@@ -1,6 +1,7 @@
-package com.vinnichenko.lesson1.service;
+package test.vinnichenko.lesson1.service;
 
 import com.vinnichenko.lesson1.exeption.ProgramException;
+import com.vinnichenko.lesson1.service.CalendarService;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

@@ -9,6 +9,7 @@ public class LineValidator {
     }
 
     public boolean isDouble(String input) {
+
         return input.matches(REGEX_DOUBLE);
     }
 }

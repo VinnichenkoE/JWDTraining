@@ -6,24 +6,28 @@ import com.vinnichenko.lesson1.validator.CalendarValidator;
 
 public class CalendarService {
 
+    private static final int SECONDS_IN_HOUR = 3600;
+    private static final int SECONDS_IN_MINUTE = 60;
+    private static final int DURATION_LEAP_YEAR_CYCLE = 4;
+    private static final int NOT_LEAP_YEAR_DIVIDER = 100;
+    private static final int LEAP_YEAR_DIVIDER = 400;
+
     public boolean isYearLeap(int year) {
         boolean result = false;
-        if (year % 4 == 0) {
-            result = year % 100 != 0 || year % 400 == 0;
+        if (year % DURATION_LEAP_YEAR_CYCLE == 0) {
+            result = year % NOT_LEAP_YEAR_DIVIDER != 0 || year % LEAP_YEAR_DIVIDER == 0;
         }
         return result;
     }
 
-    public int daysInMonth(int year, int month) throws ProgramException {
+    public int daysInMonth(int year, int numberOfMonth) throws ProgramException {
         int days;
         CalendarValidator calendarValidator = new CalendarValidator();
-        if (calendarValidator.isYearValid(year) && calendarValidator.isNumberOfMonthValid(month)) {
-            days = Month.values()[month - 1].getDays();
+        if (calendarValidator.isYearValid(year) && calendarValidator.isNumberOfMonthValid(numberOfMonth)) {
+            Month month = Month.values()[numberOfMonth - 1];
+            days = month == Month.FEBRUARY && isYearLeap(year) ? month.getDays() + 1 : month.getDays();
         } else {
-            throw new ProgramException("incorrect value of the date");
-        }
-        if (month == 2 && isYearLeap(year)) {
-            days++;
+            throw new ProgramException("incorrect value of input");
         }
         return days;
     }
@@ -32,15 +36,16 @@ public class CalendarService {
         CalendarValidator calendarValidator = new CalendarValidator();
         if (calendarValidator.isSecondValid(second)) {
             int pastSeconds = second - 1;
-            int hours = pastSeconds / 3600;
-            int hoursInSeconds = hours * 3600;
-            int minutes = (pastSeconds - hoursInSeconds) / 60;
-            int minutesInSeconds = minutes * 60;
+            int hours = pastSeconds / SECONDS_IN_HOUR;
+            int hoursInSeconds = hours * SECONDS_IN_HOUR;
+            int minutes = (pastSeconds - hoursInSeconds) / SECONDS_IN_MINUTE;
+            int minutesInSeconds = minutes * SECONDS_IN_MINUTE;
             int seconds = pastSeconds - hoursInSeconds - minutesInSeconds;
-            String result = "Passed " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
-            return result;
+            StringBuilder stringBuilder = new StringBuilder("Passed ").append(hours).append(" hours ")
+                    .append(minutes).append(" minutes ").append(seconds).append(" seconds");
+            return stringBuilder.toString();
 
         }
-        throw new ProgramException("incorrect value of second");
+        throw new ProgramException("incorrect value of input");
     }
 }

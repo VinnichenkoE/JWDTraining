@@ -40,7 +40,7 @@ public class DigitService {
 
     }
 
-    public double calculateFunction(double argument) {
+    public double calculateCustomFunction(double argument) {
         double value;
         if (argument >= 3) {
             value = -Math.pow(argument, 2) + 3 * argument + 9;

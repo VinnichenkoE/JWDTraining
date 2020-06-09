@@ -7,8 +7,7 @@ import com.vinnichenko.lesson1.validator.PointValidator;
 public class PointService {
 
     public double calculateDistance(Point point) {
-        double distance = Math.hypot(point.getCoordinateX(), point.getCoordinateY());
-        return distance;
+        return Math.hypot(point.getCoordinateX(), point.getCoordinateY());
     }
 
     public int compareDistance(Point pointA, Point pointB) throws ProgramException {
