@@ -41,4 +41,32 @@ public class CalendarServiceTest {
         int expected = 28;
         assertEquals(actual, expected);
     }
+
+    @Test
+    public void testIsYearLeapPositive() {
+        boolean condition = calendarService.isYearLeap(2020);
+        assertTrue(condition);
+    }
+
+    @Test
+    public void testIsYearLeapNegative() {
+        boolean condition = calendarService.isYearLeap(2019);
+        assertFalse(condition);
+    }
+
+    @Test(expectedExceptions = ProgramException.class)
+    public void testPassedTimeException() throws ProgramException {
+        calendarService.passedTime(90_000);
+    }
+
+    @Test
+    public void testPassedTime(){
+        try {
+            String actual = calendarService.passedTime(60_000);
+            String expected = "Passed 16 hours 39 minutes 59 seconds";
+            assertEquals(actual, expected);
+        } catch (ProgramException e){
+            fail();
+        }
+    }
 }

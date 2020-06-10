@@ -18,7 +18,7 @@ public class DigitService {
 
     }
 
-    public boolean moreThanTwoEven(List<Integer> numbers) {
+    public boolean twoOrMoreEvenNumbers(List<Integer> numbers) {
         int counter = 0;
         for (int number : numbers) {
             if (number % 2 == 0) {

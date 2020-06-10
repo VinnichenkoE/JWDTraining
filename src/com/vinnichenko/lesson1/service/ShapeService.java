@@ -5,18 +5,21 @@ import com.vinnichenko.lesson1.exeption.ProgramException;
 public class ShapeService {
 
     public double inscribeSquare(Double givenSquare) throws ProgramException {
-        double square;
         if (givenSquare >= 0) {
             double diameter = Math.sqrt(givenSquare);
-            square = Math.pow(diameter, 2) / 2;
+            double square = Math.pow(diameter, 2) / 2;
+            return square;
         } else {
             throw new ProgramException("the square is negative");
         }
-        return square;
     }
 
-    public double excess(double givenSquare, double calculateSquare){
-        return givenSquare/calculateSquare;
+    public double excess(double givenSquare, double calculateSquare) throws ProgramException {
+        if (givenSquare >= 0 && calculateSquare >= 0) {
+            return givenSquare / calculateSquare;
+        } else {
+            throw new ProgramException("the square is negative");
+        }
     }
 
     public double circumference(double radius) throws ProgramException {
