@@ -21,15 +21,14 @@ public class CalendarService {
     }
 
     public int daysInMonth(int year, int numberOfMonth) throws ProgramException {
-        int days;
         CalendarValidator calendarValidator = new CalendarValidator();
         if (calendarValidator.isYearValid(year) && calendarValidator.isNumberOfMonthValid(numberOfMonth)) {
             Month month = Month.values()[numberOfMonth - 1];
-            days = month == Month.FEBRUARY && isYearLeap(year) ? month.getDays() + 1 : month.getDays();
+            int days = month == Month.FEBRUARY && isYearLeap(year) ? month.getDays() + 1 : month.getDays();
+            return days;
         } else {
             throw new ProgramException("incorrect value of input");
         }
-        return days;
     }
 
     public String passedTime(int second) throws ProgramException {

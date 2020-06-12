@@ -4,7 +4,6 @@ import com.vinnichenko.lesson1.service.DigitService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,10 +81,10 @@ public class DigitServiceTest {
     public void testCalculateTanFunction() {
         Map<Double, Double> actual = digitService.calculateTanFunction(0, 45, 15);
         Map<Double, Double> expected = new TreeMap<Double, Double>() {{
-            put(0D, 0D);
-            put(15D, 0.2679491924311227);
-            put(30D, 0.5773502691896257);
-            put(45D, 0.9999999999999999);
+            put(0.0, 0.0);
+            put(15.0, 0.2679491924311227);
+            put(30.0, 0.5773502691896257);
+            put(45.0, 0.9999999999999999);
         }};
         assertEquals(actual, expected);
     }

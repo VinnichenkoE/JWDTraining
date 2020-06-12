@@ -3,9 +3,10 @@ package com.vinnichenko.lesson1.validator;
 public class CalendarValidator {
 
     private static final int SECONDS_PER_DAY = 86400;
+    private static final int MAX_NUMBER_OF_YEAR = 3000;
 
     public boolean isYearValid(int year) {
-        return year >= 0 && year <= 3000;
+        return year >= 0 && year <= MAX_NUMBER_OF_YEAR;
     }
 
     public boolean isNumberOfMonthValid(int month) {

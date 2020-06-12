@@ -6,6 +6,8 @@ import java.util.TreeMap;
 
 public class DigitService {
 
+    private static final int EVEN_NUMBER_DIVIDER = 2;
+
     public int lastDigit(int number) {
         return number % 10;
     }
@@ -15,13 +17,12 @@ public class DigitService {
         int squareOfLastDigit = (int) Math.pow(lastDigit, 2);
         int result = lastDigit(squareOfLastDigit);
         return result;
-
     }
 
     public boolean twoOrMoreEvenNumbers(List<Integer> numbers) {
         int counter = 0;
         for (int number : numbers) {
-            if (number % 2 == 0) {
+            if (number % EVEN_NUMBER_DIVIDER == 0) {
                 counter++;
             }
         }
@@ -36,8 +37,6 @@ public class DigitService {
             }
         }
         return number == count;
-
-
     }
 
     public double calculateCustomFunction(double argument) {

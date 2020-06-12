@@ -10,30 +10,28 @@ import java.util.List;
 public class InputParser {
     public int stringToInt(String number) throws ProgramException {
         LineValidator lineValidator = new LineValidator();
-        int result;
         if (lineValidator.isInteger(number)) {
-            result = Integer.parseInt(number);
+            int result = Integer.parseInt(number);
+            return result;
         } else {
             throw new ProgramException("incorrect format of input");
         }
-        return result;
     }
 
     public double stringToDouble(String number) throws ProgramException {
-        double result;
         LineValidator lineValidator = new LineValidator();
         if (lineValidator.isDouble(number)) {
-            result = Double.parseDouble(number);
+            double result = Double.parseDouble(number);
+            return result;
         } else {
             throw new ProgramException("incorrect format of input");
         }
-        return result;
     }
 
-    public List<Integer> listOfStringsToListOfIntegers (List<String> strings) throws ProgramException {
+    public List<Integer> listOfStringsToListOfIntegers(List<String> strings) throws ProgramException {
         DigitValidator digitValidator = new DigitValidator();
         List<Integer> numbers = new ArrayList<>();
-        if (digitValidator.isListOfInteger(strings)){
+        if (digitValidator.isListOfInteger(strings)) {
             for (String string : strings) {
                 int number = Integer.parseInt(string);
                 numbers.add(number);

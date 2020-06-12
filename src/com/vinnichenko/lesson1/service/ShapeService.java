@@ -29,7 +29,6 @@ public class ShapeService {
         } else {
             throw new ProgramException("the radius is negative");
         }
-
     }
 
     public double squareOfCircle(double radius) throws ProgramException {
@@ -39,7 +38,5 @@ public class ShapeService {
         } else {
             throw new ProgramException("the radius is negative");
         }
-
     }
-
 }

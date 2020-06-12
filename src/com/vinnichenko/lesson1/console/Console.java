@@ -47,12 +47,12 @@ public class Console {
         System.out.println(output);
     }
 
-    public void printFunctionValue(double value){
+    public void printFunctionValue(double value) {
         StringBuilder stringBuilder = new StringBuilder("The function value is ").append(value);
         System.out.println(stringBuilder);
     }
 
-    public void printSquareAndCircumference(double square, double circumference){
+    public void printSquareAndCircumference(double square, double circumference) {
         StringBuilder stringBuilder = new StringBuilder("square of the circle is ").
                 append(square).append(" circumference is ").append(circumference);
         System.out.println(stringBuilder);
